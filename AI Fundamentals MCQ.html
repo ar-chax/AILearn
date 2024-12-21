@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Foundations Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen pb-20">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">AI Foundations Quiz</h1>
+            <p class="text-gray-600 text-center mb-4">Test your knowledge with this 50-question quiz covering AI fundamentals.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <form id="quizForm" class="space-y-6">
+                <!-- Questions will be inserted here -->
+            </form>
+        </div>
+
+        <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4">
+            <div class="max-w-4xl mx-auto flex justify-between items-center">
+                <button id="submitQuiz" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Submit Quiz
+                </button>
+                <div id="score" class="hidden text-lg font-semibold"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                id: "q1",
+                question: "Which of the following best describes Artificial Intelligence?",
+                options: {
+                    a: "A computer program that can only perform predetermined tasks",
+                    b: "Systems that can mimic human cognitive functions and adapt to new situations",
+                    c: "Any program that runs on a computer",
+                    d: "A database management system"
+                },
+                correct: "b"
+            },
+            {
+                id: "q2",
+                question: "What distinguishes modern AI systems from traditional computer programs?",
+                options: {
+                    a: "Speed of execution",
+                    b: "Ability to learn and adapt from experience",
+                    c: "Amount of memory used",
+                    d: "Programming language used"
+                },
+                correct: "b"
+            },
+            {
+                id: "q3",
+                question: "Which component is most crucial for an AI system's learning capability?",
+                options: {
+                    a: "Processing speed",
+                    b: "Data quality and quantity",
+                    c: "Storage capacity",
+                    d: "Network connectivity"
+                },
+                correct: "b"
+            },
+            {
+                id: "q4",
+                question: "In the context of AI, what does 'intelligence' primarily refer to?",
+                options: {
+                    a: "Speed of calculations",
+                    b: "Memory storage capacity",
+                    c: "Ability to solve complex problems and adapt",
+                    d: "Number of operations per second"
+                },
+                correct: "c"
+            },
+            {
+                id: "q5",
+                question: "Which of these is NOT a primary goal of artificial intelligence?",
+                options: {
+                    a: "Pattern recognition",
+                    b: "Problem-solving",
+                    c: "Perfect replication of human consciousness",
+                    d: "Decision making"
+                },
+                correct: "c"
+            },
+            {
+                id: "q6",
+                question: "What is the significance of the 'Chinese Room' argument in AI?",
+                options: {
+                    a: "It proves AI can think",
+                    b: "It questions whether simulation of understanding equals real understanding",
+                    c: "It demonstrates computer superiority",
+                    d: "It shows how to teach AI Chinese"
+                },
+                correct: "b"
+            },
+            {
+                id: "q7",
+                question: "Which ethical consideration is most critical in AI development?",
+                options: {
+                    a: "Cost of implementation",
+                    b: "Processing speed",
+                    c: "Bias and fairness in decision-making",
+                    d: "Programming language choice"
+                },
+                correct: "c"
+            },
+            {
+                id: "q8",
+                question: "What role does data play in modern AI systems?",
+                options: {
+                    a: "Just for storage",
+                    b: "Only for calculations",
+                    c: "Fundamental to learning and adaptation",
+                    d: "Purely for backup purposes"
+                },
+                correct: "c"
+            },
+            {
+                id: "q9",
+                question: "What characterizes Narrow AI (Weak AI)?",
+                options: {
+                    a: "General problem-solving ability",
+                    b: "Task-specific intelligence",
+                    c: "Emotional intelligence",
+                    d: "Self-awareness"
+                },
+                correct: "b"
+            },
+            {
+                id: "q10",
+                question: "Which is the most accurate description of current AI technology?",
+                options: {
+                    a: "Artificial General Intelligence",
+                    b: "Multiple Narrow AI systems",
+                    c: "Conscious AI",
+                    d: "Superior to human intelligence"
+                },
+                correct: "b"
+            },
+            // Continue with questions 11-50...
+
+{  
+    id: "q11",  
+    question: "How does Strong AI differ from Weak AI?",  
+    options: {  
+        a: "Processing power",  
+        b: "Memory capacity",  
+        c: "General intelligence capability",  
+        d: "Programming language used"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q12",  
+    question: "Which application best represents Narrow AI?",  
+    options: {  
+        a: "A system that can solve any problem",  
+        b: "A chess-playing program",  
+        c: "An AI with consciousness",  
+        d: "A program that can learn anything"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q13",  
+    question: "What is the key limitation of current AI systems?",  
+    options: {  
+        a: "Processing speed",  
+        b: "Memory capacity",  
+        c: "Domain-specific functionality",  
+        d: "Cost of implementation"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q14",  
+    question: "Which best describes Artificial General Intelligence (AGI)?",  
+    options: {  
+        a: "Currently widely available",  
+        b: "Theoretical concept of human-level AI",  
+        c: "Limited to specific tasks",  
+        d: "Slower than narrow AI"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q15",  
+    question: "What distinguishes reactive machines from self-aware AI?",  
+    options: {  
+        a: "Processing speed",  
+        b: "Memory capacity",  
+        c: "Consciousness and self-awareness",  
+        d: "Programming language"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q16",  
+    question: "What is the fundamental difference between machine learning and traditional programming?",  
+    options: {  
+        a: "Speed of execution",  
+        b: "Learning from data vs. explicit programming",  
+        c: "User interface",  
+        d: "Hardware requirements"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q17",  
+    question: "Which term best describes the process of model improvement through experience?",  
+    options: {  
+        a: "Debugging",  
+        b: "Iteration",  
+        c: "Learning",  
+        d: "Coding"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q18",  
+    question: "What is feature extraction in machine learning?",  
+    options: {  
+        a: "Writing code",  
+        b: "Identifying relevant data characteristics",  
+        c: "Running programs",  
+        d: "Testing software"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q19",  
+    question: "Which metric is NOT commonly used to evaluate machine learning models?",  
+    options: {  
+        a: "Accuracy",  
+        b: "Precision",  
+        c: "Lines of code",  
+        d: "Recall"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q20",  
+    question: "What is overfitting in machine learning?",  
+    options: {  
+        a: "Using too much data",  
+        b: "Model performs well on training but poorly on new data",  
+        c: "Using too little data",  
+        d: "Model runs too slowly"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q21",  
+    question: "What is the purpose of cross-validation?",  
+    options: {  
+        a: "Speed up training",  
+        b: "Reduce memory usage",  
+        c: "Assess model performance on unseen data",  
+        d: "Improve user interface"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q22",  
+    question: "Which is NOT a type of machine learning?",  
+    options: {  
+        a: "Supervised learning",  
+        b: "Unsupervised learning",  
+        c: "Interface learning",  
+        d: "Reinforcement learning"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q23",  
+    question: "What is the role of the training dataset?",  
+    options: {  
+        a: "Test model performance",  
+        b: "Teach the model patterns",  
+        c: "Speed up processing",  
+        d: "Store results"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q24",  
+    question: "What is regularization in machine learning?",  
+    options: {  
+        a: "Making code regular",  
+        b: "Preventing overfitting",  
+        c: "Speeding up processing",  
+        d: "Organizing data"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q25",  
+    question: "Which is a key consideration in feature selection?",  
+    options: {  
+        a: "Feature relevance to the problem",  
+        b: "Programming language choice",  
+        c: "Computer speed",  
+        d: "User interface design"  
+    },  
+    correct: "a"  
+},  
+{  
+    id: "q26",  
+    question: "What is the bias-variance tradeoff?",  
+    options: {  
+        a: "Programming choice",  
+        b: "Balance between model complexity and generalization",  
+        c: "Speed vs accuracy",  
+        d: "Memory usage"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q27",  
+    question: "What is ensemble learning?",  
+    options: {  
+        a: "Group programming",  
+        b: "Combining multiple models",  
+        c: "Fast computing",  
+        d: "Data storage"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q28",  
+    question: "What is the basic unit of a neural network?",  
+    options: {  
+        a: "Neuron",  
+        b: "Bit",  
+        c: "Pixel",  
+        d: "Byte"  
+    },  
+    correct: "a"  
+},  
+{  
+    id: "q29",  
+    question: "What is the purpose of activation functions in neural networks?",  
+    options: {  
+        a: "Speed up processing",  
+        b: "Introduce non-linearity",  
+        c: "Store data",  
+        d: "Save memory"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q30",  
+    question: "What is backpropagation?",  
+    options: {  
+        a: "Data storage method",  
+        b: "Error correction algorithm",  
+        c: "Network speed",  
+        d: "Memory management"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q31",  
+    question: "Which layer type is NOT commonly found in neural networks?",  
+    options: {  
+        a: "Input layer",  
+        b: "Hidden layer",  
+        c: "Storage layer",  
+        d: "Output layer"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q32",  
+    question: "What is the purpose of weights in neural networks?",  
+    options: {  
+        a: "Store data",  
+        b: "Determine connection strength",  
+        c: "Speed up processing",  
+        d: "Save memory"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q33",  
+    question: "What is a deep neural network?",  
+    options: {  
+        a: "A fast network",  
+        b: "A network with many hidden layers",  
+        c: "A large database",  
+        d: "A complex program"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q34",  
+    question: "What is the vanishing gradient problem?",  
+    options: {  
+        a: "Network speed issue",  
+        b: "Learning difficulty in deep networks",  
+        c: "Memory shortage",  
+        d: "Programming error"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q35",  
+    question: "What is dropout in neural networks?",  
+    options: {  
+        a: "Network failure",  
+        b: "Regularization technique",  
+        c: "Data loss",  
+        d: "Programming error"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q36",  
+    question: "Which activation function is commonly used for binary classification?",  
+    options: {  
+        a: "ReLU",  
+        b: "Sigmoid",  
+        c: "Linear",  
+        d: "Tangent"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q37",  
+    question: "What is batch normalization?",  
+    options: {  
+        a: "Data storage",  
+        b: "Training stabilization technique",  
+        c: "Network speed",  
+        d: "Memory management"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q38",  
+    question: "What is the purpose of the loss function?",  
+    options: {  
+        a: "Speed up processing",  
+        b: "Measure model error",  
+        c: "Store data",  
+        d: "Save memory"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q39",  
+    question: "What are convolutional neural networks specialized for?",  
+    options: {  
+        a: "Text processing",  
+        b: "Image processing",  
+        c: "Sound processing",  
+        d: "Data storage"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q40",  
+    question: "What characterizes supervised learning?",  
+    options: {  
+        a: "No labels in training data",  
+        b: "Labeled training data",  
+        c: "No training data",  
+        d: "Random learning"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q41",  
+    question: "What is the main characteristic of unsupervised learning?",  
+    options: {  
+        a: "Uses labeled data",  
+        b: "Finds patterns in unlabeled data",  
+        c: "No data needed",  
+        d: "Always supervised"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q42",  
+    question: "What distinguishes reinforcement learning?",  
+    options: {  
+        a: "Uses labeled data",  
+        b: "Learning through rewards and penalties",  
+        c: "No feedback needed",  
+        d: "Static learning"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q43",  
+    question: "Which is NOT a type of unsupervised learning?",  
+    options: {  
+        a: "Clustering",  
+        b: "Classification",  
+        c: "Dimensionality reduction",  
+        d: "Association"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q44",  
+    question: "What is semi-supervised learning?",  
+    options: {  
+        a: "No learning involved",  
+        b: "Combines labeled and unlabeled data",  
+        c: "Only uses labeled data",  
+        d: "Random learning"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q45",  
+    question: "What is the main goal of clustering algorithms?",  
+    options: {  
+        a: "Prediction",  
+        b: "Classification",  
+        c: "Group similar data points",  
+        d: "Data storage"  
+    },  
+    correct: "c"  
+},  
+{  
+    id: "q46",  
+    question: "What characterizes online learning?",  
+    options: {  
+        a: "Internet connection required",  
+        b: "Learning from data streams",  
+        c: "Offline processing",  
+        d: "Batch processing"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q47",  
+    question: "What is transfer learning?",  
+    options: {  
+        a: "Data transfer",  
+        b: "Applying knowledge from one task to another",  
+        c: "Network transfer",  
+        d: "Memory transfer"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q48",  
+    question: "What is the primary challenge in reinforcement learning?",  
+    options: {  
+        a: "Data storage",  
+        b: "Exploration vs exploitation tradeoff",  
+        c: "Network speed",  
+        d: "Memory usage"  
+    },  
+    correct: "b"  
+},  
+{  
+    id: "q49",  
+    question: "What distinguishes batch learning from online learning?",  
+    options: {  
+        a: "Speed of processing",  
+        b: "Training on entire dataset vs incremental updates",  
+        c: "Memory usage",  
+        d: "Network type"  
+    },  
+    correct: "b"  
+},
+            {
+                id: "q50",
+                question: "What is active learning?",
+                options: {
+                    a: "Physical activity",
+                    b: "Selective data labeling strategy",
+                    c: "Fast learning",
+                    d: "Memory management"
+                },
+                correct: "b"
+            }
+        ];
+
+        // Function to create question HTML
+        function createQuestionHTML(question, index) {
+            return `
+                <div class="question-container p-4 border-b last:border-b-0">
+                    <p class="font-medium mb-3">${index}. ${question.question}</p>
+                    <div class="space-y-2 ml-4">
+                        ${Object.entries(question.options).map(([key, value]) => `
+                            <label class="flex items-center">
+                                <input type="radio" name="${question.id}" value="${key}" class="mr-2">
+                                <span>${value}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize all questions
+        document.getElementById('quizForm').innerHTML = questions
+            .map((q, i) => createQuestionHTML(q, i + 1))
+            .join('');
+
+        // Handle form submission
+        document.getElementById('submitQuiz').addEventListener('click', function(e) {
+            e.preventDefault();
+            let score = 0;
+
+            questions.forEach(question => {
+                const selected = document.querySelector(`input[name="${question.id}"]:checked`);
+                if (selected && selected.value === question.correct) {
+                    score++;
+                }
+            });
+
+            // Display score
+            const scoreDiv = document.getElementById('score');
+            scoreDiv.textContent = `Score: ${score} out of ${questions.length}`;
+            scoreDiv.classList.remove('hidden');
+            
+            // Scroll to top to see score
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
